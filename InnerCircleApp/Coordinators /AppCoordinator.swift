@@ -8,8 +8,8 @@
 import UIKit
 
 class AppCoordinator: Coordinator {
-    var coordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    var coordinators: [Coordinator] = []
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -19,8 +19,20 @@ class AppCoordinator: Coordinator {
         showLogin()
     }
     
-    private func showLogin() {
-        print("Show login")
+    func showLogin() {
+        let loginCoordinator = LoginCoordinator(navigationController: navigationController)
+        loginCoordinator.parentCoordinator = self
+        coordinate(to: loginCoordinator)
     }
     
+    func showOnboarding() {
+        print("TODO: Show Onboarding")
+        // Will implement next
+    }
+    
+    func showHome() {
+        let homeVC = HomeViewController()
+        navigationController.pushViewController(homeVC, animated: true)
+        coordinators.removeAll()
+    }
 }
