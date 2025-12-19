@@ -28,13 +28,15 @@ class AppCoordinator: Coordinator {
     }
     
     func showOnboarding() {
-        print("TODO: Show Onboarding")
-        // Will implement next
+        let onboardingCoordinator = OnboardingCoordinator(navigationController: navigationController)
+        onboardingCoordinator.parentCoordinator = self
+        coordinators.removeAll { $0 is OnboardingCoordinator }
+        coordinate(to: onboardingCoordinator)
     }
     
     func showHome() {
         let homeVC = HomeViewController()
-        navigationController.pushViewController(homeVC, animated: true)
+        navigationController.setViewControllers([homeVC], animated: true)
         coordinators.removeAll()
     }
 
