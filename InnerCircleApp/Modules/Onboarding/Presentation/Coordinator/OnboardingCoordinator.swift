@@ -33,7 +33,6 @@ class OnboardingCoordinator: Coordinator {
         // Create SwiftUI view
         let onboardingView = OnboardingContainerView(viewModel: viewModel)
         
-        // Wrap in UIHostingController ← KEY: UIKit → SwiftUI
         let hostingController = UIHostingController(rootView: onboardingView)
         hostingController.title = "Onboarding"
         
