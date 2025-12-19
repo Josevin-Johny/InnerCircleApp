@@ -14,7 +14,7 @@ final class LoginView: UIView {
     
     let newUserButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Continue as New User", for: .normal)
+        button.setTitle("NEW USER", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -35,13 +35,20 @@ final class LoginView: UIView {
     }
     
     private func setupUI() {
-        backgroundColor = .systemBackground
+        backgroundColor = UIColor(white: 0.96, alpha: 1.0)
         
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
         addSubview(newUserButton)
         addSubview(activityIndicator)
+
+        newUserButton.setTitleColor(.white, for: .normal)
+        newUserButton.backgroundColor = UIColor(white: 0.22, alpha: 1.0)
+        newUserButton.layer.cornerRadius = 8
+        loginButton.backgroundColor = .systemBlue
+        loginButton.setTitleColor(.white, for: .normal)
+        activityIndicator.color = .systemBlue
         
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100),
@@ -57,7 +64,9 @@ final class LoginView: UIView {
             loginButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
             newUserButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 16),
-            newUserButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            newUserButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            newUserButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            newUserButton.heightAnchor.constraint(equalToConstant: 50),
             
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)

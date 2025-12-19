@@ -14,6 +14,10 @@ final class CustomTextField: UITextField {
         self.placeholder = placeholder
         self.isSecureTextEntry = isSecure
         self.keyboardType = keyboardType
+        self.attributedPlaceholder = NSAttributedString(
+            string: placeholder,
+            attributes: [.foregroundColor: UIColor.systemGray]
+        )
         setupUI()
     }
     
@@ -24,7 +28,11 @@ final class CustomTextField: UITextField {
     private func setupUI() {
         borderStyle = .roundedRect
         autocapitalizationType = .none
+        backgroundColor = .white
+        textColor = .black
+        layer.borderColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        layer.borderWidth = 1
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
+        heightAnchor.constraint(equalToConstant: 56).isActive = true
     }
 }
