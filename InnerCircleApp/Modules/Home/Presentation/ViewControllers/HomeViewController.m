@@ -16,6 +16,11 @@
     
     self.title = @"Home";
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
+                                                                             action:@selector(handleLogout)];
     
     UILabel *welcomeLabel = [[UILabel alloc] init];
     welcomeLabel.text = @"Welcome to Inner Circle!";
@@ -29,6 +34,10 @@
         [welcomeLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
         [welcomeLabel.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor]
     ]];
+}
+
+- (void)handleLogout {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ICLogoutNotification" object:nil];
 }
 
 @end
